@@ -1,0 +1,84 @@
+<template>
+    <div class="page" data-name="type">
+      <div class="navbar">
+        <div class="navbar-bg"></div>
+        <div class="navbar-inner ">
+          <div class="left">
+            <a href="#" class="link back">
+              <i class="icon icon-back"></i>
+              <span class="if-not-md">Back</span>
+            </a>
+          </div>
+          <div class="title">La Listes</div>
+          <div class="right">
+            <a href="/Listes/ajout/" class="link icon-only " >
+              <i class="icon f7-icons if-not-md">add</i>
+              <i class="icon material-icons if-md">add</i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="page-content">
+      <div class="data-table data-table-init card" id="taches">
+  
+      </div>
+  
+    </div> 
+    </div>
+  </template>
+  
+  <script>
+    import $$ from 'dom7';
+    export default function(props, { $onMounted, $f7,  $f7router }) {
+      
+      $onMounted(() => {
+        $f7.request.json('http://localhost/demo/TodListAPI/Liste/list.php')
+          .then(function(res) {
+            // variable qui stocke les données récupérées
+            var data = res.data;
+  
+            // variable qui stocke le code html
+            var html = '<table>';
+            html += '<thead>';
+            html += '<tr><th class="checkbox-cell"><label class="checkbox"><input type="checkbox" /><i class="icon-checkbox"></i></label></th><th class="numeric-cell ">ID</th><th class="label-cell ">Nom</th><th class="label-cell">Description</th></tr>';
+            html += '</thead>';
+            html += '<tbody>';
+   
+            for (var i = 0; i < data.length; i++) {
+              html += '<tr><td class="checkbox-cell"><label class="checkbox"><input type="checkbox" /><i class="icon-checkbox"></i></label></td>';
+              html += '<td class="numeric-cell">' + data[i].id_liste + '</td>';
+              html += '<td class="label-cell">' + data[i].nom + '</td>';
+              html += '<td class="label-cell"><a href="/Listes/detail/' + data[i].id_liste + '">' + 'Voir la description' + '</a></td>';
+              html += '<td class="label-cell"><button class="button button-fill button-big color-red" data-id="' + data[i].id_liste + '">Supprimer</button></td>';
+              html += '<td class="label-cell"><button class="button button-fill button-big color-blue" data-id="' + data[i].id_liste + '">Modifier</button></td>';
+
+              html += '</tr>';
+
+            }
+  
+            html += '</tbody>';
+            html += '</table>';
+  
+            $$('#taches').html(html);
+
+            $$('.color-red').on('click', function() {
+              var id_liste = $$(this).data('id');
+              console.log('id_liste:', id_liste);
+              $f7.request.post('http://localhost/demo/TodListAPI/Liste/SuppressionList.php', {'id_liste':id_liste}, function (response) {
+                console.log(response);
+                $f7router.refreshPage();
+                });
+            });
+            
+        $$('.color-blue').on('click', function() {
+          var id_liste = $$(this).data('id');
+          console.log('id_liste:', id_liste);
+          // Naviguer vers la page de modification
+          $f7router.navigate('/Listes/modification/' + id_liste);
+        });
+      });
+    });
+      return $render;
+    };
+  </script>
+  

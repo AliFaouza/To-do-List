@@ -1,0 +1,94 @@
+<template>
+  <div class="page" data-name="type">
+    <div class="navbar">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="if-not-md">Back</span>
+          </a>
+        </div>
+        <div class="title">Description  </div>
+        <div class="right">
+          <a href="/Taches/ajout/:id_liste" class="link icon-only " >
+            <i class="icon f7-icons if-not-md">add</i>
+            <i class="icon material-icons if-md">add</i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="block-title">La description de la liste ${$f7route.params.id_liste}</div>
+      <div id="description"></div>
+
+     
+
+      <div class="data-table data-table-init card" id="taches-liste"></div>
+    </div>
+  </div>
+</template>
+
+<script>
+import $$ from 'dom7';
+
+export default function (props, { $onMounted, $f7, $f7route }) {
+  $onMounted(() => {
+    const id_liste = $f7route.params.id_liste;
+    $f7.request.json(`http://localhost/demo/TodListAPI/Liste/list.php?id=${id_liste}`)
+      .then(function(res) {
+        // variable qui stocke les données récupérées
+        const data = res.data;
+        // trouve l'élément dans les données qui correspond à l'id sélectionné
+        const selectedItem = data.find(item => item.id_liste == id_liste);
+
+        // affiche la description de l'élément sélectionné
+        document.getElementById('description').innerHTML = selectedItem.description;
+      })
+      .catch(function(error) {
+        console.error('Erreur de récupération de la description: ' + error);
+      });
+
+    $f7.request.json('http://localhost/demo/TodListAPI/Tache/ListeTache.php?id_liste=' + id_liste)
+      .then(function(res) {
+        var data = res.data;
+        
+        var html = '<table>';
+        html += '<thead>';
+        html += '<tr><th class="numeric-cell">ID</th><th class="label-cell">Nom</th><th class="label-cell">Description</th><th class="label-cell">Niveau</th></tr>';
+        html += '</thead>';
+        html += '<tbody>';
+
+        for (var i = 0; i < data.length; i++) {
+          html += '<tr>';
+          html += '<td class="numeric-cell">' + data[i].id_tache + '</td>';
+          html += '<td class="label-cell">' + data[i].nom + '</td>';
+          html += '<td class="label-cell">' + data[i].description + '</td>';
+          html += '<td class="label-cell">' + data[i].niveau + '</td>';
+          html += '<td class="label-cell"><button class="button button-fill button-big color-red" data-id="' + data[i].id_tache + '">Supprimer</button></td>';
+              html += '<td class="label-cell"><button class="button button-fill button-big color-blue" data-id="' + data[i].id_tache + '">Modifier</button></td>';
+          html += '</tr>';
+        }
+
+        html += '</tbody>';
+        html += '</table>';
+        $$('#taches-liste').html(html);
+
+        $$('.color-red').on('click', function() {
+              var id_tache = $$(this).data('id');
+              console.log('id_tache:', id_tache);
+              $f7.request.post('http://localhost/demo/TodListAPI/Tache/SupprimerTache.php', {'id_tache':id_tache}, function (response) {
+                console.log(response);
+                // $f7route.refreshPage();
+                // location.reload();
+                });
+            });
+      })
+      .catch(function(error) {
+        console.error('Erreur de récupération des tâches: ' + error);
+      });
+  });
+
+  return $render;
+}
+</script>

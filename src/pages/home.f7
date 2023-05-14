@@ -1,0 +1,64 @@
+<template>
+  <div class="page" data-name="home">
+    <!-- Top Navbar -->
+    <div class="navbar navbar-large">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner">
+        <!--panel left-->
+        <div class="left">
+          <a href="#" class="link icon-only panel-open" data-panel="left">
+            <i class="icon f7-icons if-not-md">menu</i>
+            <i class="icon material-icons if-md">menu</i>
+          </a>
+        </div>
+        <!--end panel left-->
+        <div class="title sliding">TodoList</div>
+     <!--panel right-->
+        <div class="right">
+          <a href="#" class="link icon-only panel-open" data-panel="right">
+            <i class="icon f7-icons if-not-md">menu</i>
+            <i class="icon material-icons if-md">menu</i>
+          </a>
+        </div>
+        <!-- end  panel right-->
+        <div class="title-large">
+          <div class="title-large-text">To-do List</div>
+        </div>
+      </div>
+      
+    </div>
+    <!-- Toolbar-->
+    <div class="toolbar toolbar-bottom">
+      <div class="toolbar-inner">
+        <a href="/dynamic-route/blog/45/post/125/?foo=bar#about">Dynamic (Component) Route</a>
+        <a href="/load-something-that-doesnt-exist/">Default Route (404)</a>
+        <a href="/request-and-load/user/123456/">Request Data & Load</a>
+        <a href="/request-and-load/user/123456/">Request Data & Load</a>
+      </div>
+    </div>
+    <!-- Scrollable page content-->
+    <div class="page-content">
+
+      <div class="block block-strong">
+        <div class="row">
+          <div class="col-50">
+            <a href="#" class="button button-raised button-fill popup-open" data-popup="#my-popup">Popup</a>
+          </div>
+          <div class="col-50">
+            <a href="#" class="button button-raised button-fill login-screen-open" data-login-screen="#my-login-screen">Login Screen</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="list links-list">
+        <a href="/type/">Nos types</a>
+      
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+export default () => {
+  return $render;
+}
+</script>

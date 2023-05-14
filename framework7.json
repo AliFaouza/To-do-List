@@ -1,0 +1,19 @@
+{
+  "cwd": "C:\\MAMP\\TodList",
+  "type": [
+    "pwa"
+  ],
+  "name": "To-do List",
+  "framework": "core",
+  "template": "split-view",
+  "bundler": "vite",
+  "cssPreProcessor": false,
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": false
+  },
+  "customBuild": false
+}
