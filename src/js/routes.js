@@ -13,7 +13,7 @@ import TypelistDetailList from '../pages/type/detail.f7';
 import TypelistAjoutList from '../pages/type/ajout.f7';
 import TypeUpdateList from '../pages/type/modificationType.f7';
 import Taches    from   '../pages/Taches/list.f7';
-import TachesDetailList from '../pages/Taches/detail.f7';
+import TachesModificationtache from '../pages/Taches/ModificationTache.f7';
 import TachesAjoutList from '../pages/Taches/ajout.f7';
 import Listeslist from '../pages/Listes/liste.f7';
 import ListesAjoutList from '../pages/Listes/ajout.f7';
@@ -58,13 +58,14 @@ var routes = [
     path: '/Taches/',
     component: Taches,
   },
-  {
-    path: '/Taches/detail/',
-    component: TachesDetailList,
-  },
+
   {
     path: '/Taches/ajout/:id_liste',
     component: TachesAjoutList ,
+  },
+  {
+    path: '/Taches/ModificationTache/',
+    component: TachesModificationtache ,
   },
   {
     path: '/Listes/',

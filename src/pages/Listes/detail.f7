@@ -11,7 +11,8 @@
         </div>
         <div class="title">Description  </div>
         <div class="right">
-          <a href="/Taches/ajout/:id_liste" class="link icon-only " >
+          <a href="/Taches/ajout/${$f7route.params.id_liste}" class="button button-fill add-task-btn" >
+
             <i class="icon f7-icons if-not-md">add</i>
             <i class="icon material-icons if-md">add</i>
           </a>
@@ -32,7 +33,7 @@
 <script>
 import $$ from 'dom7';
 
-export default function (props, { $onMounted, $f7, $f7route }) {
+export default function (props, { $onMounted, $f7, $f7route,$f7router }) {
   $onMounted(() => {
     const id_liste = $f7route.params.id_liste;
     $f7.request.json(`http://localhost/demo/TodListAPI/Liste/list.php?id=${id_liste}`)
@@ -66,7 +67,7 @@ export default function (props, { $onMounted, $f7, $f7route }) {
           html += '<td class="label-cell">' + data[i].description + '</td>';
           html += '<td class="label-cell">' + data[i].niveau + '</td>';
           html += '<td class="label-cell"><button class="button button-fill button-big color-red" data-id="' + data[i].id_tache + '">Supprimer</button></td>';
-              html += '<td class="label-cell"><button class="button button-fill button-big color-blue" data-id="' + data[i].id_tache + '">Modifier</button></td>';
+          html += '<td class="label-cell"><button class="button button-fill button-big color-blue" data-id="' + data[i].id_tache + '">Modifier</button></td>';
           html += '</tr>';
         }
 
@@ -79,10 +80,16 @@ export default function (props, { $onMounted, $f7, $f7route }) {
               console.log('id_tache:', id_tache);
               $f7.request.post('http://localhost/demo/TodListAPI/Tache/SupprimerTache.php', {'id_tache':id_tache}, function (response) {
                 console.log(response);
-                // $f7route.refreshPage();
-                // location.reload();
+                 $f7router.refreshPage();
+                
                 });
             });
+         $$('.color-blue').on('click', function() {
+          var id_tache = $$(this).data('id');
+          console.log('id_tache:', id_tache);
+          // Naviguer vers la page de modification
+          $f7router.navigate('/Taches/ModificationTache/?id:' + id_tache);
+        });
       })
       .catch(function(error) {
         console.error('Erreur de récupération des tâches: ' + error);
