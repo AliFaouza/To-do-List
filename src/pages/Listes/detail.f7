@@ -85,7 +85,7 @@ export default function (props, { $onMounted, $f7, $f7route,$f7router }) {
           var id_tache = $$(this).data('id');
           console.log('id_tache:', id_tache);
           // Naviguer vers la page de modification
-          $f7router.navigate('/Taches/ModificationTache/?id:' + id_tache);
+          $f7router.navigate('/Taches/ModificationTache/?id=' + id_tache);
         });
       })
       .catch(function(error) {
