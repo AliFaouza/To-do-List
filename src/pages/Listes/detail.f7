@@ -22,10 +22,7 @@
     <div class="page-content">
       <div class="block-title">La description de la liste ${$f7route.params.id_liste}</div>
       <div id="description"></div>
-
-     
-
-      <div class="data-table data-table-init card" id="taches-liste"></div>
+       <div class="data-table data-table-init card" id="taches-liste"></div>
     </div>
   </div>
 </template>
