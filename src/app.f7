@@ -25,9 +25,6 @@
                 <li>
                   <a href="/type/" data-view=".view-main" class="panel-close">Types</a>
                 </li>
-                <li>
-                  <a href="/Taches/" data-view=".view-main" class="panel-close">Tâches</a>
-                </li>
               </ul>
             </div>
             <div class="block-title">Control Main View</div>

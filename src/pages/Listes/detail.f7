@@ -9,7 +9,7 @@
             <span class="if-not-md">Back</span>
           </a>
         </div>
-        <div class="title">Description  </div>
+        <div class="title">Description & Liste des Tâches </div>
         <div class="right">
           <a href="/Taches/ajout/${$f7route.params.id_liste}" class="button button-fill add-task-btn" >
 
@@ -53,12 +53,12 @@ export default function (props, { $onMounted, $f7, $f7route,$f7router }) {
         
         var html = '<table>';
         html += '<thead>';
-        html += '<tr><th class="numeric-cell">ID</th><th class="label-cell">Nom</th><th class="label-cell">Description</th><th class="label-cell">Niveau</th></tr>';
+        html += '<tr><th class="checkbox-cell"><label class="checkbox"><input type="checkbox" /><i class="icon-checkbox"></i></label></th><th class="numeric-cell ">ID</th><th class="label-cell ">Nom</th><th class="label-cell">Description</th><th class="numeric-cell">Niveau</th></tr>';
         html += '</thead>';
         html += '<tbody>';
 
         for (var i = 0; i < data.length; i++) {
-          html += '<tr>';
+          html += '<tr><td class="checkbox-cell"><label class="checkbox"><input type="checkbox" /><i class="icon-checkbox"></i></label></td>';
           html += '<td class="numeric-cell">' + data[i].id_tache + '</td>';
           html += '<td class="label-cell">' + data[i].nom + '</td>';
           html += '<td class="label-cell">' + data[i].description + '</td>';

@@ -12,7 +12,6 @@ import Typelist from '../pages/type/list.f7';
 import TypelistDetailList from '../pages/type/detail.f7';
 import TypelistAjoutList from '../pages/type/ajout.f7';
 import TypeUpdateList from '../pages/type/modificationType.f7';
-import Taches    from   '../pages/Taches/list.f7';
 import TachesModificationtache from '../pages/Taches/ModificationTache.f7';
 import TachesAjoutList from '../pages/Taches/ajout.f7';
 import Listeslist from '../pages/Listes/liste.f7';
@@ -53,10 +52,6 @@ var routes = [
   {
     path: '/left-page-2/',
     component: LeftPage2,
-  },
-  {
-    path: '/Taches/',
-    component: Taches,
   },
 
   {

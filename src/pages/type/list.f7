@@ -45,7 +45,7 @@ export default function(props, { $onMounted, $f7,$f7router }) {
         for (var i = 0; i < data.length; i++) {
           html += '<tr>';
           html += '<td class="numeric-cell">' + data[i].id_type + '</td>';
-          html += '<td class="label-cell"><a href="/Taches/detail/:data[i].id_liste">' + data[i].nom + '</a></td>';
+          html += '<td class="label-cell">' + data[i].nom + '</td>';
           html += '<td class="label-cell">' + data[i].couleur + '</td>';
           html += '<td class="label-cell"><button class="button button-fill button-big color-red" data-id="' + data[i].id_type + '">Supprimer</button></td>';
           html += '<td class="label-cell"><button class="button button-fill button-big color-blue" data-id="' + data[i].id_type + '">Modifier</button></td>';

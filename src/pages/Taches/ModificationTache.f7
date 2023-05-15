@@ -22,7 +22,7 @@
             <div class="item-inner">
               <div class="item-title item-label">Nom</div>
               <div class="item-input-wrap">
-                <input type="text" name="name" placeholder="Non de la tache " value="{{name}}" />
+                <input type="text" name="name" placeholder="Non de la tache " />
               </div>
             </div>
           </li>

@@ -22,7 +22,7 @@
               <div class="item-inner">
                 <div class="item-title item-label">Nom</div>
                 <div class="item-input-wrap">
-                  <input type="text" name="name" placeholder="Nom du type ........." value="{{name}}"/>
+                  <input type="text" name="name" placeholder="Nom du type ........."/>
                 </div>
               </div>
             </li>
