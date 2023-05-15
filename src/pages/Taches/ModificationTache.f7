@@ -1,120 +1,104 @@
 <template>
-    <div class="page" data-name="type">
-      <div class="navbar">
-        <div class="navbar-bg"></div>
-        <div class="navbar-inner sliding">
-          <div class="left">
-            <a href="#" class="link back">
-              <i class="icon icon-back"></i>
-              <span class="if-not-md">Back</span>
-            </a>
-          </div>
-          <div class="title">Modifier Une Tache</div>
+  <div class="page" data-name="type">
+    <div class="navbar">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="if-not-md">Back</span>
+          </a>
         </div>
-      </div>
-      <div class="page-content">
-        <div class="block-title"></div>
-        
-          <form class="list" id="myform">
-          <ul>
-            <!-- additional "item-input-outline" class -->
-            <li class="item-content item-input item-input-outline">
-              <div class="item-inner">
-                <div class="item-title item-label">Nom</div>
-                <div class="item-input-wrap">
-                  <input type="text" name="name" placeholder="Non de la tache " value="{{name}}"/>
-                </div>
-              </div>
-            </li>
-  
-            <li class="item-content item-input item-input-outline">
-              <div class="item-inner">
-                <div class="item-title item-label">Description</div>
-                <div class="item-input-wrap">
-                    <textarea name="description" placeholder="Description de la liste" id="description"></textarea>
-                </div>
-              </div>
-            </li>
-            <li class="item-content item-input item-input-outline">
-                <div class="item-inner">
-                  <div class="item-title item-label">Niveau</div>
-                  <div class="item-input-wrap">
-                    <input type="text" name="niveau" placeholder="Niveau"  id="niveau" value="{{niveau}}"/>
-                  </div>
-                </div>
-              </li>
-          </ul>
-        </form>
-        
-  
-        <div class="row">
-          
-          <div class="col-50">
-            <a href="#" class="button button-fill button-big color-green convert-form-to-data" >Modifier</a>
-            
-          </div>
-        </div> 
+        <div class="title">Modifier Une Tache</div>
       </div>
     </div>
-  </template>
-  
-  <script>
-    import $$ from 'dom7';
-      
-    export default (props, { $, $on, $f7, $onMounted, $f7route }) => {
-      //   let id_tache = $f7route.params.id_tache; // Récupérer l'ID de la tâche à modifier
-      //   var id_liste =$f7route.params.id_liste;
-      
-        
-      //       const form = $$('#myform'); 
-            
-      //       $f7.request.get(`http://localhost/demo/TodListAPI/Tache/ListeTache.php?id_liste=${id_liste}`, (data) => {
-      //           if (data.trim() !== '') {
-      //               const { name, description, niveau } = JSON.parse(data);
-      //               form.find('[name="name"]').val(name); 
-      //               form.find('[name="description"]').val(description);
-      //               form.find('[name="niveau"]').val(niveau);
-      //           }
-      //       });
-            
-           
-      //    $on('pageInit', () => {
-      //   $('.convert-form-to-data').on('click', function () {
-      //     var formData = $f7.form.convertToData('#myform');
-      //     console.log(formData);
-      //     console.log(id_liste);
-  
-      //     $f7.request.post(`http://localhost/demo/TodListAPI/Tache/ModificationTache.php/`+ id_tache, formData, function (response) {
-      //       console.log(response);
-      //       // $f7router.navigate('/Listes/');
-      //     });
-      //   });
-      // });
-        
-              $on('pageInit', ()=> {
-                $('.convert-form-to-data').on('click', function (){
-              var id_tache =$f7route.params.id_tache;
-              var formData = $f7.form.convertToData('#myform');
+    <div class="page-content">
 
-              // Créer l'objet tache avec les données appropriées
-              // formData.id_tache = id_tache;
+      <div class="block-title">Modification de la tache ${$f7route.query.id}</div>
+      <form class="list" id="myform">
+        <ul>
+          <!-- additional "item-input-outline" class -->
+          <li class="item-content item-input item-input-outline">
+            <div class="item-inner">
+              <div class="item-title item-label">Nom</div>
+              <div class="item-input-wrap">
+                <input type="text" name="name" placeholder="Non de la tache " value="{{name}}" />
+              </div>
+            </div>
+          </li>
 
-              // Envoyer la requête avec les données de la tâche
-              $f7.request.post('http://localhost/demo/TodListAPI/Tache/ModificationTache.php/'+ id_tache, formData, function(data) {
-                console.log(data);
-                console.log(id_tache);
-                // $f7router.navigate('/Listes/');
-                        
-              }, function(xhr, status) {
-            // Traitement en cas d'erreur
-            console.log(status);
-          });
-        });
+          <li class="item-content item-input item-input-outline">
+            <div class="item-inner">
+              <div class="item-title item-label">Description</div>
+              <div class="item-input-wrap">
+                <textarea name="description" placeholder="Description de la liste" id="description"></textarea>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input item-input-outline">
+            <div class="item-inner">
+              <div class="item-title item-label">Niveau</div>
+              <div class="item-input-wrap">
+                <input type="number" name="niveau" placeholder="Niveau de la tache ........" />
+
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input item-input-outline">
+            <input type="hidden" name="id_tache" value="${$f7route.query.id}" />
+          </li>
+        </ul>
+      </form>
+
+
+      <div class="row">
+
+        <div class="col-50">
+          <a href="#" class="button button-fill button-big color-green convert-form-to-data">Modifier</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import $$ from 'dom7';
+
+  export default (props, { $, $on, $f7, $onMounted, $f7router, $f7route }) => {
+    var id_tache = $f7route.query.id; // Récupérer l'ID de l'élément à modifier
+  
+      // Récupérer les données actuelles de l'élément à modifier à partir du serveur
+      $f7.request.get(`http://localhost/demo/TodListAPI/Tache/ListeTache.php?id_tache=${id_tache}`, (data) => {
+        // Remplir le formulaire avec les données actuelles
+        const { name, description, niveau } = JSON.parse(data);
+        $('[name="name"]').val(name);
+        $('[name="description"]').val(description);
+        $('[name="niveau"]').val(niveau);
+
       });
 
-        return $render;
-    };
+    $on('pageInit', () => {
+      $('.convert-form-to-data').on('click', function () {
+        
+        var formData = $f7.form.convertToData('#myform');
+
+        // Créer l'objet tache avec les données appropriées
+        // formData.id_tache = id_tache;
+
+        // Envoyer la requête avec les données de la tâche
+        $f7.request.post('http://localhost/demo/TodListAPI/Tache/ModificationTache.php?id_tache=' + id_tache, formData, function (data) {
+          console.log(data);
+          console.log(id_tache);
+          $f7router.navigate('/Listes/');
+
+        }, function (xhr, status) {
+          // Traitement en cas d'erreur
+          console.log(status);
+        });
+      });
+    });
+
+    return $render;
+  };
 </script>
-
-
-  
