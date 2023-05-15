@@ -62,36 +62,55 @@
     import $$ from 'dom7';
       
     export default (props, { $, $on, $f7, $onMounted, $f7route }) => {
-        let id_tache = $f7route.params.id_tache; // Récupérer l'ID de la tâche à modifier
-        var id_liste =$f7route.params.id_liste;
+      //   let id_tache = $f7route.params.id_tache; // Récupérer l'ID de la tâche à modifier
+      //   var id_liste =$f7route.params.id_liste;
       
         
-            const form = $$('form#myform'); 
+      //       const form = $$('#myform'); 
             
-            $f7.request.get(`http://localhost/demo/TodListAPI/Tache/ListeTache.php?id_liste=${id_liste}`, (data) => {
-                if (data.trim() !== '') {
-                    const { name, description, niveau } = JSON.parse(data);
-                    form.find('[name="name"]').val(name); // Utiliser .find(...) au lieu de .querySelector(...)
-                    form.find('[name="description"]').val(description);
-                    form.find('[name="niveau"]').val(niveau);
-                }
-            });
+      //       $f7.request.get(`http://localhost/demo/TodListAPI/Tache/ListeTache.php?id_liste=${id_liste}`, (data) => {
+      //           if (data.trim() !== '') {
+      //               const { name, description, niveau } = JSON.parse(data);
+      //               form.find('[name="name"]').val(name); 
+      //               form.find('[name="description"]').val(description);
+      //               form.find('[name="niveau"]').val(niveau);
+      //           }
+      //       });
             
            
-         $on('pageInit', () => {
-        $('.convert-form-to-data').on('click', function () {
-          var formData = $f7.form.convertToData('#myform');
-          console.log(formData);
-          console.log(id_liste);
+      //    $on('pageInit', () => {
+      //   $('.convert-form-to-data').on('click', function () {
+      //     var formData = $f7.form.convertToData('#myform');
+      //     console.log(formData);
+      //     console.log(id_liste);
   
-          $f7.request.post(`http://localhost/demo/TodListAPI/Tache/ModificationTache.php/`+ id_tache, formData, function (response) {
-            console.log(response);
-            // $f7router.navigate('/Listes/');
+      //     $f7.request.post(`http://localhost/demo/TodListAPI/Tache/ModificationTache.php/`+ id_tache, formData, function (response) {
+      //       console.log(response);
+      //       // $f7router.navigate('/Listes/');
+      //     });
+      //   });
+      // });
+        
+              $on('pageInit', ()=> {
+                $('.convert-form-to-data').on('click', function (){
+              var id_tache =$f7route.params.id_tache;
+              var formData = $f7.form.convertToData('#myform');
+
+              // Créer l'objet tache avec les données appropriées
+              // formData.id_tache = id_tache;
+
+              // Envoyer la requête avec les données de la tâche
+              $f7.request.post('http://localhost/demo/TodListAPI/Tache/ModificationTache.php/'+ id_tache, formData, function(data) {
+                console.log(data);
+                console.log(id_tache);
+                // $f7router.navigate('/Listes/');
+                        
+              }, function(xhr, status) {
+            // Traitement en cas d'erreur
+            console.log(status);
           });
         });
       });
-        
-      
 
         return $render;
     };
