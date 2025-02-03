@@ -1,4 +1,4 @@
-```md
+
 <h1 align="center">📋 To-Do List with Framework7 & PHP 👋</h1>
 
 <p align="center">
@@ -81,5 +81,5 @@ DELETE /api/tasks/:id
 ---
 
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator) and customized for this project._  
-```
+
 
