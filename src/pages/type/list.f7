@@ -30,7 +30,7 @@
   import $$ from 'dom7';
 export default function(props, { $onMounted, $f7,$f7router }) {
   $onMounted(() => {
-    $f7.request.json('http://localhost/demo/TodListAPI/Type/listeTypes.php')
+    $f7.request.json('http://localhost/DEMO/TodListAPI/Type/listeTypes.php')
       .then(function(resultat) {
         // variable qui stocke les données récupérées
         var data = resultat.data;
@@ -61,7 +61,7 @@ export default function(props, { $onMounted, $f7,$f7router }) {
           $$('.color-red').on('click', function() {
               var id_type = $$(this).data('id');
               console.log('id_type:', id_type);
-              $f7.request.post('http://localhost/demo/TodListAPI/Type/SuppressionType.php', {'id_type':id_type}, function (response) {
+              $f7.request.post('http://localhost/DEMO/TodListAPI/Type/SuppressionType.php', {'id_type':id_type}, function (response) {
                 console.log(response);
                 $f7router.refreshPage();
                 });

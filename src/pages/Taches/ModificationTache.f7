@@ -69,7 +69,7 @@
     var id_tache = $f7route.query.id; // Récupérer l'ID de l'élément à modifier
   
       // Récupérer les données actuelles de l'élément à modifier à partir du serveur
-      $f7.request.get(`http://localhost/demo/TodListAPI/Tache/ListeTache.php?id_tache=${id_tache}`, (data) => {
+      $f7.request.get(`http://localhost/DEMO/TodListAPI/Tache/ListeTache.php?id_tache=${id_tache}`, (data) => {
         // Remplir le formulaire avec les données actuelles
         const { name, description, niveau } = JSON.parse(data);
         $('[name="name"]').val(name);

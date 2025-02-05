@@ -61,7 +61,7 @@
       var formData = $f7.form.convertToData('#myform');
       console.log(formData);
       
-      $f7.request.post('http://localhost/demo/TodListAPI/Liste/AjoutList.php', formData, function (response) {
+      $f7.request.post('http://localhost/DEMO/TodListAPI/Liste/AjoutList.php', formData, function (response) {
       console.log(response);
       $f7router.navigate('/Listes/');
      });

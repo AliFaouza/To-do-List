@@ -59,7 +59,7 @@
       let id = props.id_type; // Récupérer l'ID de l'élément à modifier
   
       // Récupérer les données actuelles de l'élément à modifier à partir du serveur
-      $f7.request.get(`http://localhost/demo/TodListAPI/type/listeTypes.php?id_type=${id}`, (data) => {
+      $f7.request.get(`http://localhost/DEMO/TodListAPI/type/listeTypes.php?id_type=${id}`, (data) => {
         // Remplir le formulaire avec les données actuelles
         const { name, couleur } = JSON.parse(data);
         $('[name="name"]').val(name);
@@ -74,7 +74,7 @@
           console.log(formData);
           console.log(id);
   
-          $f7.request.post(`http://localhost/demo/TodListAPI/Type/ModificationType.php?id_type=`+id, formData, function (response) {
+          $f7.request.post(`http://localhost/DEMO/TodListAPI/Type/ModificationType.php?id_type=`+id, formData, function (response) {
             console.log(response);
             $f7router.navigate('/type/');
           });

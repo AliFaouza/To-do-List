@@ -1,5 +1,4 @@
-
-<h1 align="center">📋 To-Do List with Framework7 & PHP 👋</h1>
+<h1 align="center">👋 To-Do List with Framework7 & PHP 👋</h1>
 
 <p align="center">
   <a href="#" target="_blank">
@@ -20,18 +19,9 @@ With **Framework7**, the application provides a smooth and intuitive user experi
 
 ### 🎯 Project Goals  
 - ✅ Provide a user-friendly and responsive interface for task management  
-- 📅 Enable real-time task creation, editing, and deletion  
+- 🗓️ Enable real-time task creation, editing, and deletion  
 - 🔒 Securely store and manage data through a PHP-based API  
 - 🛠️ Offer a modular and scalable architecture that can be expanded with additional features (e.g., authentication, task reminders, notifications)  
-
----
-
-## 🛠️ Technologies Used
-- **Front-end**: [Framework7](https://framework7.io/) (HTML, CSS, JavaScript)
-- **Back-end**: PHP + MySQL
-- **API**: Communication via AJAX
-
----
 
 ## 🛠️ Install Dependencies  
 First, install the dependencies by running:  
@@ -45,33 +35,39 @@ Start the application with:
 npm run start
 ```
 
-If you're running the PHP back-end separately, start a local server:  
-```sh
-php -S localhost:8000
-```
-Then, access the application at: [http://localhost:8000](http://localhost:8000)
+## 💪 Connecting API Backend to the Frontend
+1. **Clone the Project**:
+   - Clone the To-Do List repository into your local server directory. If using **XAMPP**, place it inside the `htdocs` folder.
+
+2. **Update Framework7 Configuration**:
+   - Open the `framework7.json` file and update the following line:
+   ```json
+   "cwd": "C:\\Xampp\\TodoList"
+   ```
+   - Replace the path with the actual server directory where the project is stored.
+
+3. **Set Up the API**:
+   - Clone the **TodoListApi** repository and place it inside the `htdocs` folder.
+   - Import the `sbts_todolist.sql` file into your MySQL server to create the database.
+
+4. **Configure Database Connection**:
+   - Open the API configuration file and update the database credentials:
+   ```php
+   $pdo = new PDO('mysql:dbname=todolistapi; host=localhost', 'root', '');
+   ```
+   - Ensure the database name and credentials match your setup.
+
+5. **Run the Application**:
+   - Start your local server (e.g., XAMPP) and ensure both the front-end and API are running correctly.
 
 ---
 
-## 📷 Preview  
-(Include a screenshot of your application here)
-
 ---
 
-## 💪 API Endpoints (if applicable)
-### 🔹 Get all tasks
-```http
-GET /api/tasks
-```
-### 🔹 Add a new task
-```http
-POST /api/tasks
-Body: { "title": "My Task" }
-```
-### 🔹 Delete a task
-```http
-DELETE /api/tasks/:id
-```
+## 🛠️ Technologies Used
+- **Front-end**: [Framework7](https://framework7.io/) (HTML, CSS, JavaScript)
+- **Back-end**: PHP + MySQL
+- **API**: Communication via Framework7 Request API
 
 ---
 
@@ -79,7 +75,3 @@ DELETE /api/tasks/:id
 👤 **Ali Faouza**  
 
 ---
-
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator) and customized for this project._  
-
-

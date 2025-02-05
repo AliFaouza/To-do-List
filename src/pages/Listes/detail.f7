@@ -75,7 +75,7 @@ export default function (props, { $onMounted, $f7, $f7route,$f7router }) {
         $$('.color-red').on('click', function() {
               var id_tache = $$(this).data('id');
               console.log('id_tache:', id_tache);
-              $f7.request.post('http://localhost/demo/TodListAPI/Tache/SupprimerTache.php', {'id_tache':id_tache}, function (response) {
+              $f7.request.post('http://localhost/DEMO/TodListAPI/Tache/SupprimerTache.php', {'id_tache':id_tache}, function (response) {
                 console.log(response);
                  $f7router.refreshPage();
                 

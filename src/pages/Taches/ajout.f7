@@ -79,7 +79,7 @@
       formData.id_liste = id_liste;
 
       // Envoyer la requête avec les données de la tâche
-      $f7.request.post('http://localhost/demo/TodListAPI/Tache/AjouterTache.php/'+ id_liste, formData, function(data) {
+      $f7.request.post('http://localhost/DEMO/TodListAPI/Tache/AjouterTache.php/'+ id_liste, formData, function(data) {
         console.log(data);
         $f7router.navigate('/Listes/');
                 

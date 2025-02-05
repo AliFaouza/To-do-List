@@ -32,7 +32,7 @@
     export default function(props, { $onMounted, $f7,  $f7router }) {
       
       $onMounted(() => {
-        $f7.request.json('http://localhost/demo/TodListAPI/Liste/list.php')
+        $f7.request.json('http://localhost/DEMO/TodListAPI/Liste/list.php')
           .then(function(res) {
             // variable qui stocke les données récupérées
             var data = res.data;
@@ -64,7 +64,7 @@
             $$('.color-red').on('click', function() {
               var id_liste = $$(this).data('id');
               console.log('id_liste:', id_liste);
-              $f7.request.post('http://localhost/demo/TodListAPI/Liste/SuppressionList.php', {'id_liste':id_liste}, function (response) {
+              $f7.request.post('http://localhost/DEMO/TodListAPI/Liste/SuppressionList.php', {'id_liste':id_liste}, function (response) {
                 console.log(response);
                 $f7router.refreshPage();
                 });
